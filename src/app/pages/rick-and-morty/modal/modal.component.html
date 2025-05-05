@@ -1,0 +1,29 @@
+<div class="modal fade" #modalElement tabindex="-1" aria-labelledby="personajeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content" *ngIf="personaje">
+        <div class="modal-header">
+          <h5 class="modal-title" id="personajeModalLabel">Detalles de {{ personaje.name | titlecase }}</h5>
+          <button type="button" class="btn-close" (click)="close()" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-4 text-center">
+              <img [src]="personaje.image" [alt]="personaje.name" class="img-fluid rounded mb-3">
+            </div>
+            <div class="col-md-8">
+              <p><strong>ID:</strong> {{ personaje.id }}</p>
+              <p><strong>Estado:</strong> {{ personaje.status }}</p>
+              <p><strong>Especie:</strong> {{ personaje.species }}</p>
+              <p *ngIf="personaje.type"><strong>Tipo:</strong> {{ personaje.type }}</p>
+              <p><strong>Género:</strong> {{ personaje.gender }}</p>
+              <p><strong>Origen:</strong> {{ personaje.origin.name }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

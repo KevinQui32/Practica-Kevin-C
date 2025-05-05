@@ -1,0 +1,39 @@
+<div class="row mb-3 g-3">
+    <ng-container *ngIf="personajesAll && personajesAll.results && personajesAll.results.length>0"; else noPersonajes>
+        <div class="col-3" *ngFor="let personajes of personajesAll.results"  >
+            <div class="card fixed-card" >
+
+                <div *ngIf="!imageLoaded">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" width="200" height="200" style="shape-rendering: auto; display: block; background: rgb(255, 255, 255);" xmlns:xlink="http://www.w3.org/1999/xlink"><g><path stroke="none" fill="#e15b64" d="M10 50A40 40 0 0 0 90 50A40 42 0 0 1 10 50">
+                        <animateTransform values="0 50 51;360 50 51" keyTimes="0;1" repeatCount="indefinite" dur="0.6211180124223602s" type="rotate" attributeName="transform"></animateTransform>
+                      </path><g></g></g>
+                      </svg>
+                </div>
+                    <img
+                     [src]="personajes.image" 
+                        class="card-img-top fixed-img" 
+                        alt="..."
+                        loading="lazy"
+                        (load)="imageLoaded = true"
+                        >
+
+                    <div class="card-body fixed-boddy">
+                        <h5 class="card-title">{{personajes.name}}</h5>
+                        <p class="card-text">{{personajes.status}}</p>
+                        <li class="btn btn-outline-primary"(click)="openModal(personajes.data!)">Mas información</li>
+                    </div>
+            </div>
+    </div>
+    </ng-container>
+    <ng-template #noPersonajes>
+        <div class="col-12">
+            <div class="alert alert-warning" role="alert">
+                No personajes found
+            </div>
+        </div>
+    </ng-template>
+</div>
+
+
+
+<rick-and-morty-modal/>
